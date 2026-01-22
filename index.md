@@ -9,6 +9,5 @@ Today I want to quickly show you who I am and what kind of work I do.
 
 ![photo1](/assets/images/IMG_0048.heic)
 
-This is my home page.
+[Homework 📚](homework/)
 
-- [Handshake](/handshake)
