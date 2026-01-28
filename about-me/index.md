@@ -11,7 +11,7 @@ I focus on combining aesthetics with functionality across different projects —
 Some of my key projects include:
 - Winning design for **EuroTramvaj 2022**
 - An infographic about the **Northern Lights**, created during my internship in Iceland
-- **90th-anniversary logo** for ZŠ Zdenky Braunerové
+- **Final graduation poster** 
 
 ## Current work & inspiration
 
