@@ -1,14 +1,8 @@
+## Designing a Bespoke Character
 
-## Goal
-Describe what you’re designing and why.
+For this assignment, I created a custom letterform inspired by a character from the modern English alphabet.
 
-## Process
-- References / inspiration
-- Sketches / iterations
-- Decisions you made
+I selected the uppercase **“B”** and reinterpreted it in a bold **blackletter** style, defined by sharp angles, dramatic contrast, and flowing calligraphic curves. The form balances rigidity and ornament, combining precise geometric cuts with expressive strokes.
 
-## Final
-Add final visuals here.
-
-## Reflection
-What worked, what you’d improve next time.
+The result is a distinctive, handcrafted character that reflects my personal aesthetic and interest in expressive typography.
+![B – bespoke character](./letter-B-english.jpg)
