@@ -21,6 +21,6 @@ I design visual systems, typography, and identities.
 Clear, balanced, and quietly expressive.
 
 ## Minimal / portfolio-ready
-Hello, I’m Aneta.
+Hello, I’m Aneta..
 Graphic designer working with typography, structure, and visual detail.
 
