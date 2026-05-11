@@ -16,3 +16,806 @@ I want to show you who I am and what kind of work I do.
 # SERPENTE
 
 [View serpente →](serpente/)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serpente — How a Hairpin Turn Became a Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive: #7f8b5b;
+    --olive-light: #a2ad7b;
+    --olive-dark: #5d6841;
+    --offwhite: #fcf9f1;
+    --cream: #e4dfd7;
+    --wine: #9a1d1e;
+    --wine-soft: #af474c;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--offwhite);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== GRAIN OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== SLIDE BASE ===== */
+  .slide {
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-inner {
+    max-width: 780px;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    z-index: 3;
+  }
+
+  .slide-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--olive);
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1.hero-title {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: clamp(4rem, 14vw, 11rem);
+    line-height: 0.85;
+    color: var(--olive);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 0;
+    transform: scaleY(1.6);
+    transform-origin: bottom;
+  }
+
+  h2.section-title {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    margin-bottom: 2rem;
+    transform: scaleY(1.4);
+    transform-origin: bottom left;
+  }
+
+  h2.section-title.olive { color: var(--olive); }
+  h2.section-title.wine { color: var(--wine); }
+
+  p {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    margin: 1rem 0;
+    max-width: 65ch;
+  }
+
+  p.lead {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.5;
+  }
+
+  blockquote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1.35;
+    color: var(--olive-dark);
+    border-left: 4px solid var(--olive);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 2rem 0;
+    max-width: 30ch;
+  }
+
+  strong { color: var(--olive); font-weight: 600; }
+  em { font-style: italic; }
+
+  /* ===== INTRO SLIDE ===== */
+  .slide-intro {
+    background: var(--offwhite);
+    text-align: left;
+    justify-content: space-between;
+    padding: 4rem 3rem 4rem 3rem;
+  }
+
+  .intro-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .intro-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .hero-wrap {
+    width: 100%;
+    margin: auto 0;
+  }
+
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    color: var(--ink);
+    margin-top: 2rem;
+    max-width: 30ch;
+  }
+
+  .serpentine-deco {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    height: 60%;
+    opacity: 0.15;
+    z-index: 1;
+  }
+
+  /* ===== ALT SLIDE COLORS ===== */
+  .slide-olive {
+    background: var(--olive);
+    color: var(--offwhite);
+  }
+  .slide-olive h2,
+  .slide-olive strong { color: var(--offwhite); }
+  .slide-olive .slide-label {
+    color: var(--cream);
+    border-bottom-color: var(--cream);
+  }
+  .slide-olive blockquote {
+    color: var(--offwhite);
+    border-left-color: var(--cream);
+  }
+
+  .slide-wine {
+    background: var(--wine);
+    color: var(--offwhite);
+  }
+  .slide-wine h2,
+  .slide-wine strong { color: var(--offwhite); }
+  .slide-wine .slide-label {
+    color: var(--cream);
+    border-bottom-color: var(--cream);
+  }
+
+  .slide-cream {
+    background: var(--cream);
+  }
+
+  /* ===== IMAGE CONTAINER ===== */
+  .image-frame {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--cream);
+    border: 1px solid var(--olive);
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Placeholder shown when image is missing/broken */
+  .image-frame img:not([src]),
+  .image-frame img[src=""] {
+    display: none;
+  }
+
+  .image-frame .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 8px,
+        rgba(127, 139, 91, 0.08) 8px,
+        rgba(127, 139, 91, 0.08) 9px
+      );
+    pointer-events: none;
+  }
+
+  .image-frame img[src]:not([src=""]) + .placeholder {
+    display: none;
+  }
+
+  .image-caption {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--olive-dark);
+    text-align: center;
+    padding: 1rem 2rem;
+    background: rgba(252, 249, 241, 0.9);
+    max-width: 80%;
+  }
+
+  /* ===== KEY MOMENT (the realization slide) ===== */
+  .key-word {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: clamp(5rem, 18vw, 14rem);
+    color: var(--wine);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    transform: scaleY(1.6);
+    transform-origin: center;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .slide-wine .key-word { color: var(--offwhite); }
+
+  /* ===== TAKEAWAYS LIST ===== */
+  .takeaway {
+    margin: 2.5rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+  }
+
+  .takeaway-num {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Bowlby One', sans-serif;
+    font-size: 2rem;
+    color: var(--wine);
+    line-height: 1;
+  }
+
+  .takeaway h3 {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--olive-dark);
+  }
+
+  /* ===== COLOR PALETTE GRID ===== */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--offwhite);
+  }
+  .swatch.s1 { background: var(--olive); }
+  .swatch.s2 { background: var(--offwhite); color: var(--olive-dark); border: 1px solid var(--olive); }
+  .swatch.s3 { background: var(--wine); }
+  .swatch.s4 { background: var(--olive-light); }
+  .swatch.s5 { background: var(--cream); color: var(--olive-dark); border: 1px solid var(--olive); }
+  .swatch.s6 { background: var(--wine-soft); }
+
+  /* ===== FONT SAMPLES ===== */
+  .font-sample {
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background: var(--offwhite);
+    border-left: 4px solid var(--olive);
+  }
+  .font-sample.thunder {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    transform: scaleY(1.4);
+    transform-origin: left;
+    line-height: 0.9;
+    color: var(--olive);
+  }
+  .font-sample.mono {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .font-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* ===== ENDING ===== */
+  .ciao {
+    font-family: 'Bowlby One', sans-serif;
+    font-size: clamp(6rem, 18vw, 14rem);
+    color: var(--offwhite);
+    text-transform: uppercase;
+    line-height: 0.85;
+    transform: scaleY(1.6);
+    transform-origin: bottom;
+    margin: 2rem 0;
+  }
+
+  .signature {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cream);
+    margin-top: 3rem;
+  }
+
+  /* ===== NAVIGATION DOTS ===== */
+  .nav-dots {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--olive);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    border: none;
+    padding: 0;
+  }
+  .nav-dot:hover { opacity: 0.7; transform: scale(1.4); }
+  .nav-dot.active { opacity: 1; transform: scale(1.5); }
+
+  @media (max-width: 600px) {
+    .nav-dots { display: none; }
+    .slide { padding: 3rem 1.25rem; }
+    .slide-num { top: 1rem; right: 1rem; }
+    h1.hero-title { transform: scaleY(1.3); }
+    h2.section-title { transform: scaleY(1.25); }
+    .key-word { transform: scaleY(1.3); }
+    .ciao { transform: scaleY(1.3); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    animation: bob 2.5s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
+    50% { transform: translate(-50%, 6px); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ========== SLIDE 1: INTRO ========== -->
+<section class="slide slide-intro" data-label="Intro">
+  <span class="slide-num">01 / 14</span>
+
+  <div class="intro-top">
+    <span>Storytelling talk · 12 min</span>
+    <span>VŠKK · 2026</span>
+  </div>
+
+  <div class="hero-wrap">
+    <span class="slide-label">Aneta Bromovská presents</span>
+    <h1 class="hero-title">Serpente</h1>
+    <p class="hero-subtitle">How a&nbsp;hairpin turn in&nbsp;a&nbsp;small Czech town became a&nbsp;logo.</p>
+  </div>
+
+  <div class="intro-bottom">
+    <span>Graphic &amp; Media Design</span>
+    <span>↓ scroll</span>
+  </div>
+
+  <svg class="serpentine-deco" viewBox="0 0 400 600" fill="none">
+    <path d="M 200 0 Q 350 100, 200 200 T 200 400 T 200 600" stroke="#7f8b5b" stroke-width="40" fill="none" stroke-linecap="round"/>
+  </svg>
+</section>
+
+<!-- ========== SLIDE 2: HELLO ========== -->
+<section class="slide" data-label="Who I am">
+  <span class="slide-num">02 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Hello, world</span>
+    <h2 class="section-title olive">Hi.</h2>
+    <p class="lead">My name is <strong>Aneta Bromovská</strong> and I study graphic and media design at the Prague College of Creative Communication.</p>
+    <p>Today I'd like to tell you a story about a logo.</p>
+    <p>It's not a story about how a perfect logo comes together by the textbook. It's a story about how I figured out that the best ideas often don't show up at a desk during research — they show up when you're riding the bus home and looking out the window at a road you've taken a thousand times.</p>
+  </div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- ========== SLIDE 3: LOGO REVEAL ========== -->
+<section class="slide slide-cream" data-label="The logo">
+  <span class="slide-num">03 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Starting at the end</span>
+    <h2 class="section-title olive">This is the logo.</h2>
+
+    <div class="image-frame">
+      <img src="assets/images/01-logo-final.png" alt="Final Serpente logo — a slice of pizza with a wavy bottom edge">
+      <div class="placeholder">
+        <div class="image-caption">[ assets/images/01-logo-final.png ]<br><br>Final Serpente logo — a slice of pizza with a wavy edge</div>
+      </div>
+    </div>
+
+    <p>An Italian bistro in Roztoky, a small town just outside Prague.</p>
+    <p>When you look at it, you see a slice of pizza. The bottom edge wiggles like a snake — and <em>serpente</em> is Italian for snake. Logical, right?</p>
+    <p><strong>Except it's not about a snake.</strong></p>
+    <p>This logo isn't about the Italian word for snake. It's about a road. Specifically, the one I've been driving down for twenty years on my way home.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 4: ROZTOKY ========== -->
+<section class="slide slide-olive" data-label="The place">
+  <span class="slide-num">04 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Where this begins</span>
+    <h2 class="section-title">Roztoky<br>and that hairpin road.</h2>
+
+    <div class="image-frame">
+      <img src="assets/images/02-serpentina.jpg" alt="Aerial view of the winding road in Roztoky">
+      <div class="placeholder">
+        <div class="image-caption">[ assets/images/02-serpentina.jpg ]<br><br>Aerial view of the winding road in Roztoky</div>
+      </div>
+    </div>
+
+    <p>A zig-zag road that climbs from the lower part of town up the hill. Locals complain about it — it's slick in winter, it backs up in summer.</p>
+    <p>For me it's just <em>"the way home."</em></p>
+    <p>And when the owner of a new bistro, Nebo, told me last summer that he wanted to call the place <em>Serpente</em> — I knew immediately it couldn't be about a snake.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 5: CLIENT ========== -->
+<section class="slide" data-label="The client">
+  <span class="slide-num">05 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">The first meeting</span>
+    <h2 class="section-title">Nebo and Karolína.</h2>
+
+    <p>Nebo is an Italian chef who married a Czech woman, Karolína. They moved to Roztoky and realized there was nowhere to get a proper Neapolitan pizza. So they decided to open one themselves.</p>
+
+    <p>Nebo is the type who waves his hands when he talks about food. Karolína is the opposite — she thinks everything through quietly.</p>
+
+    <p>At our first meeting, they said one sentence that decided everything for me:</p>
+
+    <blockquote>
+      "We don't want it to look like an ad for pizza. We want it to look like <em>us</em>."
+    </blockquote>
+
+    <p>Most businesses want a logo that <em>sells</em>. That's <em>catchy</em>. That <em>works on Instagram</em>. These two wanted it to look like <em>them</em>. And suddenly I knew this would be a completely different kind of project than I'd expected.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 6: FIRST ATTEMPT ========== -->
+<section class="slide slide-cream" data-label="First attempt">
+  <span class="slide-num">06 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Behind the scenes</span>
+    <h2 class="section-title wine">The first idea<br>was bad.</h2>
+
+    <div class="image-frame">
+      <img src="assets/images/04-prvni-skica.jpg" alt="First sketch — a snake wrapped around a fork">
+      <div class="placeholder">
+        <div class="image-caption">[ assets/images/04-prvni-skica.jpg ]<br><br>First sketch — a snake wrapped around a fork</div>
+      </div>
+    </div>
+
+    <p>The first thing I did when I got home was — you guessed it — draw a snake. A snake wrapped around a fork.</p>
+    <p>It looked like a logo for a pharmacy that delivers pizza.</p>
+    <p><strong>It was terrible.</strong></p>
+    <p>But it was important — because I proved to myself that the most obvious path is usually the worst one.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 7: THE MOMENT ========== -->
+<section class="slide" data-label="The moment">
+  <span class="slide-num">07 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">The day it clicked</span>
+    <h2 class="section-title olive">Bus 340.</h2>
+
+    <p>About a week after the first meeting, I was riding bus 340 home. I'm sitting by the window, looking out, and we're entering the hairpin.</p>
+    <p>The bus swings left, then right, then left again.</p>
+    <p>And in that moment I stopped thinking about snakes.</p>
+    <p>I started thinking about <em>movement</em>. About how that road looks from above. About how dough looks when someone spins it in the air. About how a stream of olive oil ripples down a slice of bread.</p>
+    <p>All of these things have something in common.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 8: THE CURVE ========== -->
+<section class="slide slide-wine" data-label="Key word">
+  <span class="slide-num">08 / 14</span>
+  <div class="slide-inner" style="text-align:center;">
+    <span class="slide-label">And that something is</span>
+    <div class="key-word">A&nbsp;Curve.</div>
+    <p style="margin: 0 auto; max-width: 40ch;">Italian cooking is full of curves. A pizza is a circle. Spaghetti is curves. Olive oil ripples. And the Roztoky road ripples the exact same way.</p>
+    <p style="margin: 1rem auto; max-width: 40ch;"><em>I got off the bus one stop early so I wouldn't forget.</em></p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 9: LOGO DETAIL ========== -->
+<section class="slide slide-cream" data-label="The result">
+  <span class="slide-num">09 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">The result</span>
+    <h2 class="section-title olive">A logo that's<br>not about a snake.</h2>
+
+    <div class="image-frame">
+      <img src="assets/images/06-logo-detail.png" alt="Logo detail — wavy motif">
+      <div class="placeholder">
+        <div class="image-caption">[ assets/images/06-logo-detail.png ]<br><br>Logo detail — the wavy motif</div>
+      </div>
+    </div>
+
+    <p>It's a slice of pizza, but the bottom edge — where you'd expect a straight crust — wiggles.</p>
+    <p>Some people see the motion of dough. Some see olive oil. Some see that road outside the window.</p>
+    <p>And some people don't notice any of that and just see a nice drawing of a pizza. <strong>That's fine.</strong></p>
+    <p><em>The best logos don't explain. They let you discover.</em></p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 10: COLOR ========== -->
+<section class="slide" data-label="Color">
+  <span class="slide-num">10 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Olive tree · Oven · Forest</span>
+    <h2 class="section-title olive">Why olive,<br>not red.</h2>
+
+    <div class="palette">
+      <div class="swatch s1">#7f8b5b</div>
+      <div class="swatch s2">#fcf9f1</div>
+      <div class="swatch s3">#9a1d1e</div>
+      <div class="swatch s4">#a2ad7b</div>
+      <div class="swatch s5">#e4dfd7</div>
+      <div class="swatch s6">#af474c</div>
+    </div>
+
+    <p>Most pizzerias in the Czech Republic use red, yellow, or the Italian flag. It makes sense — red triggers appetite, yellow stands out on the street.</p>
+    <p>But Nebo didn't want to be <em>an Italian restaurant in the Czech Republic</em>. He wanted to be <em>Serpente in Roztoky</em>.</p>
+    <p>Inside the restaurant there's a giant green pizza oven. The road I told you about is lined with forest. And then there's the olive tree itself.</p>
+    <p><strong>Three things, three meanings, one color.</strong></p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 11: TYPOGRAPHY ========== -->
+<section class="slide slide-cream" data-label="Typography">
+  <span class="slide-num">11 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">Two fonts, one reason</span>
+    <h2 class="section-title">Typography<br>as context.</h2>
+
+    <div class="font-sample thunder">Thunder<br>Extra Bold</div>
+    <p class="font-meta">Display · Logo, posters, headlines</p>
+
+    <p>It's the typeface of 1960s Italian film posters. <em>La Dolce Vita</em>, Fellini's 1960 film, is set in this kind of type.</p>
+
+    <div class="font-sample mono">Margherita .................. 285<br>San&nbsp;Daniele ................. 320<br>Nduja e&nbsp;Melanzane .......... 295</div>
+    <p class="font-meta">Space Mono · Menus, prices, details</p>
+
+    <p>It looks like a printed receipt. Like something from a small bistro by the road where the locals eat.</p>
+    <p><strong>No magic. Two fonts and one reason they belong together.</strong></p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 12: BOX + VESPA ========== -->
+<section class="slide slide-olive" data-label="Application">
+  <span class="slide-num">12 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">In the real world</span>
+    <h2 class="section-title">A&nbsp;box<br>and one Vespa.</h2>
+
+    <div class="image-frame" style="background: var(--olive-dark); border-color: var(--cream);">
+      <img src="assets/images/09-krabice.png" alt="Olive-green pizza box with BUON APPETITO printed in white">
+      <div class="placeholder">
+        <div class="image-caption">[ assets/images/09-krabice.png ]<br><br>Pizza box and Vespa mockup at the town square</div>
+      </div>
+    </div>
+
+    <p>The box is olive green, with a white logo and the words <em>BUON APPETITO</em>. When someone carries one through the streets of Roztoky, heads turn.</p>
+
+    <p>And then there's the Vespa — an old green scooter with a Serpente box on the seat, which I proposed placing on the town square as a guerrilla campaign.</p>
+
+    <p>When I showed Nebo the mockup, he said:</p>
+
+    <blockquote style="font-size: 1.3rem;">"Aneta, we might actually buy that Vespa."</blockquote>
+
+    <p><strong>A designer doesn't just make pictures. A designer gives the client permission to dream a little bigger.</strong></p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 13: TAKEAWAYS ========== -->
+<section class="slide" data-label="Takeaways">
+  <span class="slide-num">13 / 14</span>
+  <div class="slide-inner">
+    <span class="slide-label">What I learned</span>
+    <h2 class="section-title wine">Three things.</h2>
+
+    <div class="takeaway">
+      <span class="takeaway-num">01</span>
+      <h3>Ideas don't show up at the desk.</h3>
+      <p>They show up on the bus, in the shower, or while you're walking the dog. A designer's job is to <em>live</em> the thing they're designing.</p>
+    </div>
+
+    <div class="takeaway">
+      <span class="takeaway-num">02</span>
+      <h3>A rare client is a treasure.</h3>
+      <p>If you find someone who wants to be <em>themselves</em> — hold on to them. Those are the projects you'll still feel good about years later.</p>
+    </div>
+
+    <div class="takeaway">
+      <span class="takeaway-num">03</span>
+      <h3>Place is an underrated ingredient.</h3>
+      <p>People in Roztoky aren't looking for a global brand. They're looking for <em>their</em> pizzeria. And when you give them that — with their road in the logo, their forest in the color palette — you're not just a restaurant. You're <strong>their</strong> restaurant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 14: CIAO ========== -->
+<section class="slide slide-wine" data-label="The end">
+  <span class="slide-num">14 / 14</span>
+  <div class="slide-inner" style="text-align:center;">
+    <span class="slide-label">Thank you</span>
+    <div class="ciao">Ciao.</div>
+    <p class="lead" style="margin: 0 auto; max-width: 40ch;">If you're ever passing through Roztoky, <em>take the turn</em>. Under that winding road there's a small bistro with a big oven, two happy owners, and pizza boxes worth keeping out of the trash.</p>
+    <p class="signature">— Aneta Bromovská<br>VŠKK · 2026</p>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const navDots = document.getElementById('navDots');
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.title = slide.dataset.label || `Slide ${i + 1}`;
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}: ${slide.dataset.label}`);
+    dot.addEventListener('click', () => {
+      slide.scrollIntoView({ behavior: 'smooth' });
+    });
+    navDots.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.nav-dot');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[idx]) dots[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  document.addEventListener('keydown', (e) => {
+    const current = Array.from(slides).findIndex(s => {
+      const rect = s.getBoundingClientRect();
+      return rect.top >= -100 && rect.top <= 100;
+    });
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      const next = slides[Math.min(current + 1, slides.length - 1)];
+      if (next) next.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      const prev = slides[Math.max(current - 1, 0)];
+      if (prev) prev.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Hide placeholder once image loads successfully
+  document.querySelectorAll('.image-frame img').forEach(img => {
+    const placeholder = img.nextElementSibling;
+    if (!placeholder || !placeholder.classList.contains('placeholder')) return;
+    if (img.complete && img.naturalWidth > 0) {
+      placeholder.style.display = 'none';
+    } else {
+      img.addEventListener('load', () => {
+        if (img.naturalWidth > 0) placeholder.style.display = 'none';
+      });
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
