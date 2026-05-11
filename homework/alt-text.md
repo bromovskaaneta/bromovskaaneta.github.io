@@ -1,4 +1,4 @@
-## My versions 1 
+## My versions 
 A stylized blackletter uppercase “B” rendered in solid black with sharp angular forms and flowing curved strokes.
 A bold, ornamental blackletter “B” combining geometric precision with dramatic calligraphic curves on a white background.
 
